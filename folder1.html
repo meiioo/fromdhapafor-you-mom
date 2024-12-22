@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder 1</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .folder-content {
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            max-width: 600px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .folder-image {
+            width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .folder-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button-hover {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button-hover::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: #ff5722;
+            transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .button-hover:hover::before {
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes particle-move {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(calc(100px - 50%), calc(100px - 50%));
+                opacity: 0;
+            }
+        }
+
+        .fireworks {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff5722;
+            border-radius: 50%;
+            animation: explode 3s ease-out forwards;
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: red;
+            border-radius: 50%;
+            animation: particle-move 2s ease-out forwards;
+        }
+
+        .greeting {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5722;
+            margin: 20px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .greeting span {
+            display: block;
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: starTwinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes starTwinkle {
+            0% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        .glow {
+            text-shadow: 0 0 5px #ff5722, 0 0 10px #ff5722, 0 0 15px #ff5722;
+            animation: glowEffect 1.5s infinite alternate;
+        }
+
+        @keyframes glowEffect {
+            0% {
+                text-shadow: 0 0 5px #ff5722, 0 0 10px #ff5722, 0 0 15px #ff5722;
+            }
+            100% {
+                text-shadow: 0 0 15px #ff5722, 0 0 20px #ff5722, 0 0 30px #ff5722;
+            }
+        }
+
+        /* Parallax scrolling effect */
+        .parallax {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: url('background.jpg') center center/cover;
+            z-index: -2;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        /* Animating floating text */
+        .floating-text {
+            animation: floatText 4s ease-in-out infinite;
+        }
+
+        @keyframes floatText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="parallax"></div>
+    <div class="folder-content">
+        <h2>Folder 1</h2>
+        <p class="greeting glow floating-text">
+            Selamat Hari Ibu!
+            <span>Jika ada yang lebih indah dari melodi Seize The Day Mungkin itu suapan ibu dengan gaya pesawat terbangnya😊!</span>
+            <span>Ma, terima kasih untuk segalanya. semoga mama dan ayah dihadiahkan oleh Allah masuk Syurga tanpa hisab🤲</span>
+            <span>Hari ini emang hari spesial bagi ibu, tapi tidak ada hari ibu untuk ibu karna ibu selalu ada di setiap hari, selamat hari ibu.. mama wanita terhebat tanpa sayap terima kasih atas semuanya... I Love u Mom❤  </span>
+        </p>
+        <img src="img1.jpeg" alt="Kenangan 1" class="folder-image">
+        <img src="img2.jpeg" alt="Kenangan 2" class="folder-image">
+        <audio id="audio1" src="musik1.mp3" autoplay loop></audio>
+        <button class="button-hover" onclick="goBack()">Kembali</button>
+    </div>
+
+    <footer>
+        Dibuat dengan <span style="color: red;">&#10084;</span> oleh Anak mu | Mhmmd Dhapa 
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back(); // Kembali ke halaman sebelumnya
+        }
+
+        function createFireworks() {
+            for (let i = 0; i < 20; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('fireworks');
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.top = Math.random() * 100 + '%';
+                document.body.appendChild(firework);
+
+                for (let j = 0; j < 10; j++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.left = firework.style.left;
+                    particle.style.top = firework.style.top;
+                    particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    firework.appendChild(particle);
+                }
+
+                setTimeout(() => firework.remove(), 3000); // Lebih lama hingga 3 detik
+            }
+        }
+
+        // Membuat bintang yang bergerak di latar belakang
+        function generateStars() {
+            const starsContainer = document.createElement('div');
+            starsContainer.classList.add('stars');
+            document.body.appendChild(starsContainer);
+
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Memanggil fungsi bintang dan petasan saat halaman dimuat
+        window.onload = () => {
+            createFireworks();
+            generateStars();
+        };
+    </script>
+</body>
+</html>

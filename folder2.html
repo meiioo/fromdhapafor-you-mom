@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder 2</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: radial-gradient(circle, #ff9a9e, #fad0c4);
+            color: #444;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .folder-content {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            margin: 0 auto;
+            max-width: 700px;
+            animation: popIn 1.5s ease-out;
+        }
+
+        .image-carousel {
+            display: flex;
+            overflow: hidden;
+            gap: 0;
+            padding: 10px;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 80s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .folder-image {
+            flex: 0 0 auto;
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            filter: brightness(0.95);
+            transition: filter 0.3s, transform 0.3s, box-shadow 0.5s ease;
+        }
+
+        .folder-image:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px 5px rgba(255, 0, 255, 0.7), 
+                        0 0 30px 10px rgba(0, 255, 255, 0.7), 
+                        0 0 45px 15px rgba(255, 255, 0, 0.7);
+        }
+
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #2575fc, #6a11cb);
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(90deg, #f3ec78, #af4261);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 200%;
+            }
+        }
+
+        .moving-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), rgba(0,0,0,0));
+            mix-blend-mode: overlay;
+            z-index: 0;
+            pointer-events: none;
+            animation: light-move 10s linear infinite;
+        }
+
+        @keyframes light-move {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(50vw, 50vh) scale(1.5);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="moving-lights"></div>
+    <div id="snow-container"></div>
+    <script>
+        const snowContainer = document.getElementById('snow-container');
+        for (let i = 0; i < 50; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            snowContainer.appendChild(snowflake);
+        }
+    </script>
+
+    <div class="folder-content">
+        <h1>Folder 2</h1>
+        <p>Kenangan-kenangan indah yang membawa senyum ke wajah my mother and my father💏</p>
+        <div class="image-carousel">
+            <div class="carousel-track">
+                <img src="image3.jpeg" alt="Kenangan 3" class="folder-image">
+                
+                <!-- Ganti image4 dengan video -->
+                <video class="folder-image" autoplay loop muted>
+                    <source src="image4.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung video.
+                </video>
+
+                <img src="gif5.gif" alt="Kenangan 5" class="folder-image">
+                <img src="ayah.gif" alt="Kenangan 5" class="folder-image">
+
+                <img src="image6.jpeg" alt="Kenangan 6" class="folder-image">
+                <img src="image7.jpeg" alt="Kenangan 7" class="folder-image">
+                <img src="image8.jpeg" alt="Kenangan 8" class="folder-image">
+                <img src="image9.jpeg" alt="Kenangan 9" class="folder-image">
+
+                <!-- Ganti image10 dengan video -->
+                <video class="folder-image" autoplay loop muted>
+                    <source src="vid10.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung video.
+                </video>
+
+                <img src="image11.jpeg" alt="Kenangan 11" class="folder-image">
+                <img src="image12.jpeg" alt="Kenangan 12" class="folder-image">
+
+                <!-- Duplikasi gambar untuk kelancaran animasi -->
+                <img src="image3.jpeg" alt="Kenangan 3" class="folder-image">
+                <img src="gambar4.jpeg" alt="Kenangan 4" class="folder-image">
+                <img src="image5.jpeg" alt="Kenangan 5" class="folder-image">
+                <img src="image6.jpeg" alt="Kenangan 6" class="folder-image">
+                <img src="image7.jpeg" alt="Kenangan 7" class="folder-image">
+                <img src="image8.jpeg" alt="Kenangan 8" class="folder-image">
+                <img src="image9.jpeg" alt="Kenangan 9" class="folder-image">
+                <img src="image10.jpeg" alt="Kenangan 10" class="folder-image">
+                <img src="image11.jpeg" alt="Kenangan 11" class="folder-image">
+                <img src="image12.jpeg" alt="Kenangan 12" class="folder-image">
+            </div>
+        </div>
+        <audio id="audio2" src="musik2.mp3" autoplay loop></audio>
+        <button onclick="goBack()">Kembali</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back(); // Kembali ke halaman sebelumnya
+        }
+    </script>
+</body>
+</html>

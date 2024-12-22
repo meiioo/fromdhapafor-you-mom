@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy mother's day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #f7cac9, #92a8d1);
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
+            position: relative;
+        }
+
+        body.dark-mode {
+            background: #333;
+            color: #fff;
+        }
+
+        body.dark-mode .folder {
+            background-color: #444;
+            border: 1px solid #666;
+        }
+
+        body.dark-mode .folder-title {
+            background-color: #555;
+            color: #fff;
+        }
+
+        body.dark-mode footer {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            animation: slideDown 1s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .folder-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .folder {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.5s;
+            max-width: 300px;
+            padding: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .folder:hover {
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #fc575e, #f7b42c);
+        }
+
+        .folder-title {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #555;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            position: relative;
+            transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.3s;
+        }
+
+        /* Wobble Effect */
+        .folder-title:hover {
+            transform: rotate(-3deg) translateY(-5px) scale(1.05);
+            color: #fc575e;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .folder-title::after {
+            content: "✨";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            animation: sparkle 1.5s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #f7b42c, #fc575e);
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            filter: brightness(1.1);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Shadow follow cursor effect */
+        .shadow-follow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+            animation: followCursor 0.1s ease-out;
+        }
+
+        @keyframes followCursor {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="shadow-follow"></div>
+    <h1>"Welcome, mom. I have something for you. Please open one of these folders."</h1>
+    <button onclick="toggleDarkMode()">Mode Gelap/Terang</button>
+    <div class="folder-container">
+        <div class="folder" onclick="window.location.href='folder1.html'">
+            <div class="folder-title">📁 Folder 1</div>
+        </div>
+
+        <div class="folder" onclick="window.location.href='folder2.html'">
+            <div class="folder-title">📁 Folder 2</div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; from me to you mom!
+    </footer>
+
+    <script>
+        let isDarkMode = false;
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            isDarkMode = !isDarkMode;
+        }
+
+        // Shadow effect following cursor
+        const shadowFollow = document.querySelector('.shadow-follow');
+        document.body.addEventListener('mousemove', (e) => {
+            const x = e.pageX;
+            const y = e.pageY;
+            shadowFollow.style.left = `${x - 100}px`;
+            shadowFollow.style.top = `${y - 100}px`;
+        });
+    </script>
+</body>
+</html>
